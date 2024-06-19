@@ -237,7 +237,7 @@ For DWG to DXF conversion WASM support is provided in `dwg2dxfwasm.c`.
 - install cmake (`brew install cmake`)
 - create a directory outside of the source directory e.g. `libredwg-build`
 - change to the newly created directory
-- `export CMAKE_TOOLCHAIN_FILE=/usr/local/Cellar/emscripten/3.1.61/libexec/cmake/Modules/Platform/Emscripten.cmake`
+- set the location of the emscripten toolchain file `export CMAKE_TOOLCHAIN_FILE=$(em-config EMSCRIPTEN_ROOT)/cmake/Modules/Platform/Emscripten.cmake`
 - `ccmake ../libredwg`
 - use the following configuration:
 - BUILD_SHARED_LIBS OFF
