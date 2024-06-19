@@ -229,6 +229,30 @@ that uses our lib:
   features is in the test/xmlsuite directory. It also features code to output entities
   in XML, but does not use the python bindings.
 
+## WebAssembly
+For DWG to DXF conversion WASM support is provided in `dwg2dxfwasm.c`.
+
+### Build steps
+- install emscripten (on Mac: `brew install emscripten`)
+- install cmake (`brew install cmake`)
+- create a directory outside of the source directory e.g. `libredwg-build`
+- change to the newly created directory
+- set the location of the emscripten toolchain file `export CMAKE_TOOLCHAIN_FILE=$(em-config EMSCRIPTEN_ROOT)/cmake/Modules/Platform/Emscripten.cmake`
+- `ccmake ../libredwg`
+- use the following configuration:
+- BUILD_SHARED_LIBS OFF
+- BUILD_TESTING OFF
+- CMAKE_BUILD_TYPE Release
+- DISABLE_WERROR ON
+- LIBREDWG_DISABLE_JSON ON
+- LIBREDWG_LIBONLY ON
+- configure and generate (c and g)
+- `emmake make`
+
+The last step will generate the wasm binary and the js glue code.
+
+
+
 Copyright (C) 2009, 2010, 2015, 2018-2024 Free Software Foundation, Inc.
 
 This library is free software, licensed under the terms of the GNU
